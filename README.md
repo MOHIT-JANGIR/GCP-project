@@ -17,7 +17,7 @@
 
 🛑 I completed this project using Google Qwiklab and since I use single project for both development and production .
 
-No alt text provided for this image
+![image](https://user-images.githubusercontent.com/61896468/93665629-8c59fc00-fa95-11ea-89ad-a238593e64bb.png) 
 Before doing any practical we have to know some basic knowledge about that technology , so that anyone can admire our knowledge & thought process. So first we have to know about the what is the google cloud platform why do we use it ?
 
 What is Google Cloud Platform ( GCP ) ?
@@ -71,34 +71,34 @@ Google Cloud Platform (GCP), offered by Google, is a suite of cloud computing se
 
 1) For building any kind of Infrastructure on Google Cloud Platform we have to build it under a project . So, I created one project named as cloudproject for both platforms as development and production .
 
-No alt text provided for this image
+![image](https://user-images.githubusercontent.com/61896468/93665650-c2977b80-fa95-11ea-92b3-d95a2797027f.png)
 2)Under these project we have to create two VPC ( Virtual Private Cloud ) one for WordPress deployment and second for MySQL Database Instance . I have created these VPC in different regions as VPC1 in us-central1 and VPC2 in us-east1 resp . As inside VPC we have to create subnet for networking actions of the instances . One more thing we have to do is attaching firewall rule which allows all traffic to come inside the VPC as Ingress Rule .
 
 -->Creating firewall rule for Ingress traffic :
 
-No alt text provided for this image
+![image](https://user-images.githubusercontent.com/61896468/93665662-e35fd100-fa95-11ea-9d18-c5a3e4d39f6f.png)
 --> Creating VPC network for development and production platforms :
 
-No alt text provided for this image
+![image](https://user-images.githubusercontent.com/61896468/93665670-fa062800-fa95-11ea-8ccc-9e8aeaab4b32.png)
 3)For connecting these VPC's we have to use VPC Peering service of GCP . For peering the VPC'S we have to create VPC peer for both VPC1 and VPC2 as peer1 and peer2 .
 
-No alt text provided for this image
-No alt text provided for this image
+![image](https://user-images.githubusercontent.com/61896468/93665827-4140e880-fa97-11ea-8490-97638f95429a.png)
+![image](https://user-images.githubusercontent.com/61896468/93665840-4a31ba00-fa97-11ea-95b0-9338254dfd5b.png)
 4) Now both VPC got connected by VPC peering .Then we have build a kubernetes master slave architecture i.e cluster for deployment of WordPress application .For kubernetes we don't need to create our own cluster and configure master and all because Google Cloud Platform provides Kubernetes As A Service by Google Kubernetes Engine .
 
 To use Google Kubernetes Engine service we just have to tell the specifications in terms of Node Pool to them .Then they take all the responsibility further to create kubernetes cluster and about cluster management .
 
 --> Creating Kubernetes Cluster for development platform in VPC1 :
 
-No alt text provided for this image
-No alt text provided for this image
+![image](https://user-images.githubusercontent.com/61896468/93665849-73524a80-fa97-11ea-994a-593fb166bc3d.png)
+![image](https://user-images.githubusercontent.com/61896468/93665862-82d19380-fa97-11ea-842b-6d0cbc913ea6.png)
 -->Specifying node information for kubernetes cluster :
 
-No alt text provided for this image
-No alt text provided for this image
+![image](https://user-images.githubusercontent.com/61896468/93665876-9da40800-fa97-11ea-9c90-1fb9a4418156.png)
+![image](https://user-images.githubusercontent.com/61896468/93665890-a4cb1600-fa97-11ea-8438-298dc308b4e3.png)
 --->Cluster Created Successfully...
 
-No alt text provided for this image
+![image](https://user-images.githubusercontent.com/61896468/93665903-b7dde600-fa97-11ea-8ce8-41c898bd9c29.png) 
 5)For deploying the WordPress application in kubernetes cluster we have to contact with Google Kubernetes Engine .As to communicate with kubernetes master which send further task to its slave nodes we require kubectl program to be configured in our system .
 
 In these case we are using Google Cloud Platform which provides us Kubernetes As A Service using Google Kubernetes Engine and for these we have to contact to GCP from our system .For these we have to install Google Cloud SDK Shell Program in our system which provides us all the GCP respective commands to use Google Cloud .
@@ -106,11 +106,12 @@ In these case we are using Google Cloud Platform which provides us Kubernetes As
 --> Log in to Google Cloud Platform using Google Cloud SDK :
 
 gcloud auth login
-No alt text provided for this image
+![image](https://user-images.githubusercontent.com/61896468/93665918-cc21e300-fa97-11ea-912d-147c9e7291ac.png) 
+
 ---> Use of Google Cloud Native Commands :
 
 gcloud project list
-No alt text provided for this image
+![image](https://user-images.githubusercontent.com/61896468/93665931-e65bc100-fa97-11ea-8338-1369c772c91b.png) 
 To communicate with kubernetes cluster running on Google Cloud we have to update the kubeconfig file such that kubectl command is configured to contact to Google Kubernetes Engine .
 
 To see the node information use command :
@@ -132,7 +133,7 @@ In kubernetes the load balancer is known as Service .We can see all the services
 kubectl get services
 We can see through GUI one load balancer got created -->
 
-No alt text provided for this image
+![image](https://user-images.githubusercontent.com/61896468/93665949-fecbdb80-fa97-11ea-8ae4-678909f08b72.png) 
 To see everything is properly created or not in kubernetes use command -->
 
 kubectl get all
@@ -140,29 +141,29 @@ kubectl get all
 
 So,we have to launch these MySQL Database instance using SQL service of Google Cloud in production environment i.e in VPC2.
 
-No alt text provided for this image
+![image](https://user-images.githubusercontent.com/61896468/93665959-160ac900-fa98-11ea-8591-f3dc12fdcd4b.png) 
 --> Adding authorized network to public ip of MySQL Instance :
 
-No alt text provided for this image
+![image](https://user-images.githubusercontent.com/61896468/93665977-3470c480-fa98-11ea-95a2-2925ce45ebcd.png) 
 --> Log in to MySQL Instance to see available databases :
 
 mysql -h (public_ip) -u (user_name) -p
-No alt text provided for this image
-No alt text provided for this image
-No alt text provided for this image
+![image](https://user-images.githubusercontent.com/61896468/93665992-4e120c00-fa98-11ea-9481-a420749aa5ff.png)
+![image](https://user-images.githubusercontent.com/61896468/93666005-59fdce00-fa98-11ea-86d1-98eb74865cca.png)
+![image](https://user-images.githubusercontent.com/61896468/93666008-62560900-fa98-11ea-867d-cff75738382d.png)
 -->Creating new database :
 
-No alt text provided for this image
+![image](https://user-images.githubusercontent.com/61896468/93666021-77329c80-fa98-11ea-9c2b-a28f575f97af.png) 
 8) Final step is to connect WordPress application to back end i.e with MySQL Database . Using public ip of load balancer we can connect to WordPress application .
 
-No alt text provided for this image
+![image](https://user-images.githubusercontent.com/61896468/93666043-8fa2b700-fa98-11ea-954b-d596eaf69a9b.png) 
 ⏩ Now to connect MySQL database with WordPress application we have to add database login and password of the database user .
 
-No alt text provided for this image
+![image](https://user-images.githubusercontent.com/61896468/93666052-a77a3b00-fa98-11ea-9821-305e82d000d1.png) 
 After successfully connecting the database and login to WordPress we can run the installation of the WordPress application .
 
-No alt text provided for this image
-No alt text provided for this image
+![image](https://user-images.githubusercontent.com/61896468/93666066-bcef6500-fa98-11ea-8ae4-a5236f818792.png)
+![image](https://user-images.githubusercontent.com/61896468/93666072-c547a000-fa98-11ea-9a89-85aa85a64246.png)
 Finally In these way I successfully completed the Project of Google Cloud Platform Workshop based on Integrating Kubernetes with Google Cloud Platform using Google Kubernetes Engine to deploy WordPress web application .
 
 ✅ I would like to thanks Mr.Vimal Daga Sir for giving such great training on Google Cloud Platform and real use case kind of project which helps to enhance my skills in the world of Google Cloud Computing .
