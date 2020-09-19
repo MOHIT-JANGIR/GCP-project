@@ -75,10 +75,12 @@
 # → Networking
 
 
-# VPC: Virtual Private Cloud provides a private network with IP allocation, routing, and network firewall policies to create a secure environment for your deployments.
+## VPC:
+##         Virtual Private Cloud provides a private network with IP allocation, routing, and network firewall policies to create a secure environment for your deployments.
 
 
-# Cloud Load Balancing: It is a process of distributing workloads across multiple computing resources. This reduces the cost and maximizes the availability of the resources.
+## Cloud Load Balancing: 
+##                        It is a process of distributing workloads across multiple computing resources. This reduces the cost and maximizes the availability of the resources.
 
 
 ### So while doing this we need the kubernetes services provide the deploy our wordpress pods , so we have to know some basic concepts of the kubernetes.
